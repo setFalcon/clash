@@ -1,0 +1,10 @@
+# BiliBili 港澳台 / 国际版
+# 整理: 2026-11-07
+# 说明: 上游 BiliBiliIntl.list 只有 bilibili.tv 一条，覆盖不全
+#       这里补齐港澳台版本常用域名（biliintl 系列 API/CDN）
+DOMAIN-SUFFIX,biliintl.com
+DOMAIN-SUFFIX,biliintl.net
+DOMAIN-SUFFIX,bilibili.tv
+DOMAIN-SUFFIX,bstarstatic.com
+DOMAIN-SUFFIX,biliapi.net
+PROCESS-NAME,com.bstar.intl
