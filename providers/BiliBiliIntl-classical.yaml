@@ -1,0 +1,7 @@
+payload:
+  - DOMAIN-SUFFIX,biliintl.com
+  - DOMAIN-SUFFIX,biliintl.net
+  - DOMAIN-SUFFIX,bilibili.tv
+  - DOMAIN-SUFFIX,bstarstatic.com
+  - DOMAIN-SUFFIX,biliapi.net
+  - PROCESS-NAME,com.bstar.intl
