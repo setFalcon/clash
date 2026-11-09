@@ -11,6 +11,7 @@ list/                        # 自维护规则源（.list 纯文本格式）
   Apple.list                 #   Apple 全家桶合并版（含 Apple Intelligence / iCloud 私密转送）
   Check.list                 #   IP 检测 / 测速站点
   BiliBiliIntl.list          #   B 站港澳台 / 国际版
+  HBOAsia.list               #   HBO Asia / HBO GO Asia（上游覆盖不全，自维护）
 providers/                   # 预转换的 classical provider yaml（供 Clash 直接下载）
 scripts/build_providers.py   # 从 list/ 与上游规则源重新生成 providers/ 的脚本
 ini/openclash                # OpenClash 配置备份（订阅地址、密码等敏感信息已用 xxx 打码）
@@ -39,13 +40,15 @@ OpenClash 订阅设置（`config config_subscribe`）：
 ## 维护流程
 
 1. 修改 `list/` 下的自维护列表（或调整 `Cash.ini` 的分组/规则集）
-2. 重新生成 providers：
+2. 重新生成 providers（脚本会自动把 `list/*.list` 同步为 `providers/<name>-classical.yaml`，并转换 `Cash.ini` 中的上游 URL 规则集）：
 
    ```sh
    python3 -I scripts/build_providers.py
    ```
 
 3. 提交并推送，然后在 OpenClash 中更新订阅即可生效。
+
+新增自维护列表时，文件名（不含 `.list`）需与 `Cash.ini` 里引用的 provider 名一致，例如 `list/HBOAsia.list` → `providers/HBOAsia-classical.yaml`。
 
 ## 规则集书写约定（重要）
 

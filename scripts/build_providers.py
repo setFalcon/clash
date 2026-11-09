@@ -61,8 +61,27 @@ def to_classical(text: str) -> str:
     return '\n'.join(out) + '\n'
 
 
+def build_local_providers():
+    """list/*.list → providers/<name>-classical.yaml（自维护规则）"""
+    ldir = os.path.join(REPO, 'list')
+    if not os.path.isdir(ldir):
+        return []
+    built = []
+    for fname in sorted(os.listdir(ldir)):
+        if not fname.endswith('.list'):
+            continue
+        name = fname[:-len('.list')]
+        with open(os.path.join(ldir, fname), encoding='utf-8') as f:
+            text = to_classical(f.read())
+        with open(os.path.join(PROVIDERS, f'{name}-classical.yaml'), 'w', encoding='utf-8') as f:
+            f.write(text)
+        built.append(name)
+    return built
+
+
 def main():
     os.makedirs(PROVIDERS, exist_ok=True)
+    local = build_local_providers()
     lines = open(CASH, encoding='utf-8').read().splitlines()
     new_lines = []
     converted = {}
@@ -106,12 +125,12 @@ def main():
     out = []
     inserted = False
     for l in final:
-        if not inserted and l.startswith('ruleset=') and '[]GEOSITE' in l:
+        if not inserted and 'lan-direct' in converted and l.startswith('ruleset=') and '[]GEOSITE' in l:
             out.append(f'ruleset=🎯 全球直连,clash-classic:{RAW_BASE}lan-direct-classical.yaml,{INTERVAL}')
             inserted = True
         out.append(l)
     open(CASH, 'w', encoding='utf-8').write('\n'.join(out) + '\n')
-    print(f'生成 {len(converted)} 个 provider 文件到 {PROVIDERS}')
+    print(f'生成 {len(local)} 个自维护 provider、{len(converted)} 个上游 provider 到 {PROVIDERS}')
 
 
 if __name__ == '__main__':
