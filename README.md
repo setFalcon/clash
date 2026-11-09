@@ -11,6 +11,7 @@ list/                        # 自维护规则源（.list 纯文本格式）
   Apple.list                 #   Apple 全家桶合并版（含 Apple Intelligence / iCloud 私密转送）
   Check.list                 #   IP 检测 / 测速站点
   BiliBiliIntl.list          #   B 站港澳台 / 国际版
+  HBO.list                   #   HBO / HBO Max / Cinemax（已排除 HBO Asia 相关域名）
   HBOAsia.list               #   HBO Asia / HBO GO Asia（上游覆盖不全，自维护）
 providers/                   # 预转换的 classical provider yaml（供 Clash 直接下载）
 scripts/build_providers.py   # 从 list/ 与上游规则源重新生成 providers/ 的脚本
