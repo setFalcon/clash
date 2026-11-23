@@ -1,0 +1,3 @@
+payload:
+  - DOMAIN-SUFFIX,imcq.top
+  - IP-CIDR,47.107.111.255/32,no-resolve

@@ -1,0 +1,6 @@
+# 强制直连的自维护规则
+# 整理: 2026-11-23
+
+# imcq.top / fndesk.imcq.top（国内阿里云主机，需保证直连）
+DOMAIN-SUFFIX,imcq.top
+IP-CIDR,47.107.111.255/32,no-resolve
